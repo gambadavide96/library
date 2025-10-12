@@ -4,8 +4,6 @@
 You can add, view, and remove books from your personal library, including details such as title, author,pages and reading status.  
 This project is part of **[The Odin Project](https://www.theodinproject.com/)** curriculum and was built to practice **HTML**, **CSS**, and **JavaScript**.
 
----
-
 ## 🚀 Features
 
 - ➕ **Add new books** with title, author, number of pages, and reading status  
