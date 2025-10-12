@@ -66,12 +66,15 @@ button {
 }
 
 .btn-add-book {
+
   font-size: 2.7rem;
   width: 250px;
+  padding: 5px;
   border-radius: 20px;
-  border: solid 1px lightgray;
+  border: none;
   cursor: pointer;
-  background-color: F9FAFB;
+  background-color: #0e7fbc;
+  color: #F9FAFB;
   box-shadow: 2px 4px 5px gray ;
 }
 
@@ -101,7 +104,7 @@ button {
 
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .footer {
