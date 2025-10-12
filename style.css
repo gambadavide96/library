@@ -28,6 +28,13 @@ h1 {
 
 button {
   font-family: 'Raleway', 'Lato', 'Helvetica Neue', Arial, sans-serif;
+
+  font-size: 2.7rem;
+  width: 250px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+
 }
 
 .header {
@@ -66,19 +73,22 @@ button {
 }
 
 .btn-add-book {
-
-  font-size: 2.7rem;
-  width: 250px;
-  padding: 5px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
   background-color: #0e7fbc;
+  border-radius: 20px;
   color: #F9FAFB;
   box-shadow: 2px 4px 5px gray ;
 }
 
-.btn-add-book:active {
+.book .btn-remove {
+  width: 300px;
+  background-color: #E5E7EB;
+  border-radius: 4px;
+  color: #333333;
+  box-shadow: 2px 4px 5px gray ;
+}
+
+.btn-add-book:active, .btn-remove:active
+ {
   /* Sposta leggermente in basso */
   transform: translateY(2px);
 
@@ -88,8 +98,7 @@ button {
 
 .main .books-grid {
   flex: 1;
-  border: 2px solid red;
-  padding: 3rem;
+  padding: 6rem;
 
   display: flex;
   flex-direction: row;
@@ -99,12 +108,28 @@ button {
 
 .book {
   min-width: 40rem;
-  min-height: 50rem;
-  border: 2px orange solid;
+  min-height: 40rem;
+  padding: 3rem;
+
+  background-color: #F9FAFB ;
+  border-radius: 10px;
+  box-shadow: 2px 4px 5px lightgray ;
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 
+  font-size: 3.1rem;
+}
+
+.book .book-read {
+  width: 30rem;
+  text-align: center;
+  border-radius: 4px;
+  padding: 3px;
+
+  background-color: #b0fa88;
 }
 
 .footer {
