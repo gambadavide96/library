@@ -86,7 +86,22 @@ button {
 .main .books-grid {
   flex: 1;
   border: 2px solid red;
-  width: 100%;
+  padding: 3rem;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.book {
+  min-width: 40rem;
+  min-height: 50rem;
+  border: 2px orange solid;
+
+  display: flex;
+  flex-direction: column;
+  
 }
 
 .footer {
