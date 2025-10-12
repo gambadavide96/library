@@ -26,7 +26,7 @@ h1 {
    font-family: 'Poppins', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 }
 
-button{
+button {
   font-family: 'Raleway', 'Lato', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -61,15 +61,32 @@ button{
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
   flex: 1;
 }
 
 .btn-add-book {
-  font-size: 2.5rem;
-  width: 200px;
+  font-size: 2.7rem;
+  width: 250px;
   border-radius: 20px;
   border: solid 1px lightgray;
   cursor: pointer;
+  background-color: F9FAFB;
+  box-shadow: 2px 4px 5px gray ;
+}
+
+.btn-add-book:active {
+  /* Sposta leggermente in basso */
+  transform: translateY(2px);
+
+  /* Ombra più corta → effetto “schiacciato” */
+  box-shadow: 0 0 0 gray;
+}
+
+.main .books-grid {
+  flex: 1;
+  border: 2px solid red;
+  width: 100%;
 }
 
 .footer {
