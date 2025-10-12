@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+}
+
+p {
+  white-space: pre-line;
+}
+
+html {
+  font-size: 10px; /* 1rem = 10px */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+   font-family: 'Poppins', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+}
+
+button{
+  font-family: 'Raleway', 'Lato', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.header {
+  background-color: #F9FAFB;
+  color: #1F2937;
+
+  padding: 1rem 4rem 1rem 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: solid 1px lightgray;
+  box-shadow: 2px 4px 6px gray ;
+}
+
+.header .right {
+  display: flex;
+  justify-content: center ;
+  align-items: center;
+}
+
+.books-img {
+  width: 6rem;
+  height: 6rem;
+}
+
+.main {
+  background-color: #E5E7EB;
+  color: #333333;
+
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.btn-add-book {
+  font-size: 2rem;
+  width: 200px;
+  border-radius: 20px;
+  border: solid 1px lightgray;
+  cursor: pointer;
+}
+
+.footer {
+  background-color: #F9FAFB;
+  color: #374151;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footer .credits {
+  font-size: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.credits div {
+  font-size: 3.8em; /* Dipende dal font size impostato in .credits */
+}
+
+.github-logo {
+  display: block;
+  max-width: 2.8rem;
+  max-height: 2.8rem;
+  /*gestisce la transizione per la proprietà transform; la durata della transizione è di 0,3 secondi;la velocità di cambiamento non è costante: parte lenta, accelera al centro e rallenta di nuovo alla fine. */
+  transition: transform 0.3s ease-in-out;
+}
+
+.github-logo:hover {
+  transform: rotate(360deg) scale(1.2); 
+}
