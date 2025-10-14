@@ -113,6 +113,7 @@ button {
 
   background-color: #F9FAFB ;
   border-radius: 10px;
+  border: 1px solid black;
   box-shadow: 2px 4px 5px lightgray ;
 
   display: flex;
