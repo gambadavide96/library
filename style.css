@@ -130,7 +130,14 @@ button {
   border-radius: 4px;
   padding: 3px;
 
-  background-color: #b0fa88;
+}
+
+.read-yes {
+  background-color: #b0fa88;;
+}
+
+.read-no {
+  background-color: #FFCCCB;
 }
 
 .footer {

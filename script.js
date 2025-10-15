@@ -22,8 +22,18 @@ function addBookToLibrary(title,author,pages,read) {
   myLibrary.push(newBook);
 }
 
-// TODO: Funzione che itera l'array myLibrary e stampa i libri nella pagina
+function createElement(tag, className, textContent) {
+  const el = document.createElement(tag);
+  if (className) el.classList.add(className);
+  if (textContent) el.textContent = textContent;
+  return el;
+}
+
+// To iterate books and display on the page
+//TODO: Refactor this function,
+// crea delle mini funzioni che creano ogni div e lo resituiscono
 function displayBooks(){
+
   const booksGrid = document.querySelector('.books-grid');
 
   myLibrary.forEach(book => {
@@ -45,26 +55,26 @@ function displayBooks(){
 
     const bookRead = document.createElement('div');
     bookRead.classList.add('book-read');
+    book.read ? bookRead.classList.add('read-yes') : bookRead.classList.add('read-no');
     bookRead.textContent = `${ book.read ? 'Read' : 'Not Read'}`;
 
     const removeButton = document.createElement('button');
     removeButton.classList.add('btn-remove');
     removeButton.textContent = 'Remove';
 
-    bookCard.appendChild(bookName);
-    bookCard.appendChild(bookAuthor);
-    bookCard.appendChild(bookPages);
-    bookCard.appendChild(bookRead);
-    bookCard.appendChild(removeButton);
+    bookCard.append(bookName,bookAuthor,bookPages,bookRead,removeButton);
 
     booksGrid.appendChild(bookCard);
   })
 }
 
+
 document.addEventListener("DOMContentLoaded",() => {
-  addBookToLibrary("L'Odissea","Omero",1000,false);
+  addBookToLibrary("The Odyssey","Omero",1000,false);
   addBookToLibrary('Harry Potter',"JK Rowling",200,true);
-  addBookToLibrary('Il Signore degli Anelli',"J.R.R Tolkien",600,false);
+  addBookToLibrary('The Lord of The Rings',"J.R.R Tolkien",600,false);
+  addBookToLibrary('War and Peace',"Lev Tolstoj",750,false);
+  addBookToLibrary('System Error','Edward Snowden',500,true);
   displayBooks();
 })
 
