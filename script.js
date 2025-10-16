@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 // Book constructor
 function Book(title,author,pages,read) {
@@ -16,51 +16,78 @@ Book.prototype.info = function () {
    return `${this.title}, ${this.author}, ${this.pages}, ${this.read}`;
 }
 
-// Take params, create a book then store it in the array
 function addBookToLibrary(title,author,pages,read) {
   const newBook = new Book(title,author,pages,read);
   myLibrary.push(newBook);
 }
 
-function createElement(tag, className, textContent) {
-  const el = document.createElement(tag);
-  if (className) el.classList.add(className);
-  if (textContent) el.textContent = textContent;
-  return el;
+function removeBookFromLibrary(id) {
+  myLibrary = myLibrary.filter(book => book.id != id);
+  displayBooks();
 }
 
+/*Set of Functions to create books card */
+
+const createBookCard = (id) => {
+  const bookCard = document.createElement('div');
+  bookCard.id = id;
+  bookCard.classList.add('book');
+  return bookCard;
+}
+
+const createBookName = (title) => {
+  const bookName = document.createElement('div');
+  bookName.classList.add('book-name');
+  bookName.textContent = title;
+  return bookName;
+}
+
+const createBookAuthor = (author) => {
+  const bookAuthor = document.createElement('div');
+  bookAuthor.classList.add('book-author');
+  bookAuthor.textContent = author;
+  return bookAuthor;
+}
+
+const createBookPages = (pages) => {
+  const bookPages = document.createElement('div');
+  bookPages.classList.add('book-pages');
+  bookPages.textContent = `Pages: ${pages}`;
+  return bookPages;
+}
+
+const createBookRead = (isRead) => {
+  const bookRead = document.createElement('div');
+  bookRead.classList.add('book-read');
+  isRead ? bookRead.classList.add('read-yes') : bookRead.classList.add('read-no');
+  bookRead.textContent = `${ isRead ? 'Read' : 'Not Read'}`;
+  return bookRead;
+}
+
+const createRemoveButton = (bookId) => {
+  const removeButton = document.createElement('button');
+  removeButton.classList.add('btn-remove');
+  removeButton.textContent = 'Remove';
+  removeButton.addEventListener('click',() => {
+    removeBookFromLibrary(bookId);
+  })
+  return removeButton;
+}
+
+
+const booksGrid = document.querySelector('.books-grid');
+
 // To iterate books and display on the page
-//TODO: Refactor this function,
-// crea delle mini funzioni che creano ogni div e lo resituiscono
 function displayBooks(){
+  booksGrid.replaceChildren(); //Necessario per ricaricare la libreria da capo ogni volta
 
-  const booksGrid = document.querySelector('.books-grid');
-
-  myLibrary.forEach(book => {
-    const bookCard = document.createElement('div');
-    bookCard.id = book.id
-    bookCard.classList.add('book')
-    
-    const bookName = document.createElement('div');
-    bookName.classList.add('book-name');
-    bookName.textContent = `${book.title}`;
-
-    const bookAuthor = document.createElement('div');
-    bookAuthor.classList.add('book-author');
-    bookAuthor.textContent = `${book.author}`;
-
-    const bookPages = document.createElement('div');
-    bookPages.classList.add('book-pages');
-    bookPages.textContent = `Pages: ${book.pages}`;
-
-    const bookRead = document.createElement('div');
-    bookRead.classList.add('book-read');
-    book.read ? bookRead.classList.add('read-yes') : bookRead.classList.add('read-no');
-    bookRead.textContent = `${ book.read ? 'Read' : 'Not Read'}`;
-
-    const removeButton = document.createElement('button');
-    removeButton.classList.add('btn-remove');
-    removeButton.textContent = 'Remove';
+  myLibrary.forEach((book) => {
+    const bookCard = createBookCard(book.id);
+    const bookName = createBookName(book.title);
+    const bookAuthor = createBookAuthor(book.author);
+    const bookPages = createBookPages(book.pages);
+    const bookRead = createBookRead(book.read);
+    const removeButton = createRemoveButton(book.id);
 
     bookCard.append(bookName,bookAuthor,bookPages,bookRead,removeButton);
 
