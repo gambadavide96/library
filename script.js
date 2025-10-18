@@ -12,8 +12,12 @@ function Book(title,author,pages,read) {
   this.read = read;
 }
 
-Book.prototype.info = function () {
+Book.prototype.info = function() {
    return `${this.title}, ${this.author}, ${this.pages}, ${this.read}`;
+}
+
+Book.prototype.toggleRead = function() {
+  this.read = !this.read;
 }
 
 function addBookToLibrary(title,author,pages,read) {
@@ -26,7 +30,7 @@ function removeBookFromLibrary(id) {
   displayBooks();
 }
 
-/*Set of Functions to create books card */
+/*Set of Functions to create and manipulate books card */
 
 const createBookCard = (id) => {
   const bookCard = document.createElement('div');
@@ -56,11 +60,20 @@ const createBookPages = (pages) => {
   return bookPages;
 }
 
-const createBookRead = (isRead) => {
+const toggleBookRead = (id) => {
+  book = myLibrary.find(book => book.id === id);
+  book.toggleRead();
+  displayBooks();
+}
+
+const createBookRead = (isRead,bookId) => {
   const bookRead = document.createElement('div');
   bookRead.classList.add('book-read');
   isRead ? bookRead.classList.add('read-yes') : bookRead.classList.add('read-no');
   bookRead.textContent = `${ isRead ? 'Read' : 'Not Read'}`;
+  bookRead.addEventListener('click', () => {
+    toggleBookRead(bookId);
+  });
   return bookRead;
 }
 
@@ -75,6 +88,7 @@ const createRemoveButton = (bookId) => {
 }
 
 
+
 const booksGrid = document.querySelector('.books-grid');
 
 // To iterate books and display on the page
@@ -86,7 +100,7 @@ function displayBooks(){
     const bookName = createBookName(book.title);
     const bookAuthor = createBookAuthor(book.author);
     const bookPages = createBookPages(book.pages);
-    const bookRead = createBookRead(book.read);
+    const bookRead = createBookRead(book.read,book.id);
     const removeButton = createRemoveButton(book.id);
 
     bookCard.append(bookName,bookAuthor,bookPages,bookRead,removeButton);
@@ -104,7 +118,5 @@ document.addEventListener("DOMContentLoaded",() => {
   addBookToLibrary('System Error','Edward Snowden',500,true);
   displayBooks();
 })
-
-
 
 
