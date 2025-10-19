@@ -91,7 +91,7 @@ const createRemoveButton = (bookId) => {
 
 const booksGrid = document.querySelector('.books-grid');
 
-// To iterate books and display on the page
+/* To iterate books and display on the page */
 function displayBooks(){
   booksGrid.replaceChildren(); //Necessario per ricaricare la libreria da capo ogni volta
 
@@ -108,6 +108,14 @@ function displayBooks(){
     booksGrid.appendChild(bookCard);
   })
 }
+
+/* Dialog form */
+const addBookButton = document.querySelector(".btn-add-book");
+const dialog = document.querySelector("dialog");
+
+addBookButton.addEventListener('click', () => {
+  dialog.showModal();
+})
 
 
 document.addEventListener("DOMContentLoaded",() => {
