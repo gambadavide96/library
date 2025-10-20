@@ -1,4 +1,13 @@
-let myLibrary = [];
+
+function getLibrary() {
+  const data = localStorage.getItem('library');
+  if (!data) return [];
+  return JSON.parse(data);
+}
+
+function setLibrary(library) {
+  localStorage.setItem('library', JSON.stringify(library));
+}
 
 // Book constructor
 function Book(title,author,pages,read) {
@@ -12,21 +21,26 @@ function Book(title,author,pages,read) {
   this.read = read;
 }
 
-Book.prototype.info = function() {
-   return `${this.title}, ${this.author}, ${this.pages}, ${this.read}`;
-}
+// Book.prototype.info = function() {
+//    return `${this.title}, ${this.author}, ${this.pages}, ${this.read}`;
+// }
 
-Book.prototype.toggleRead = function() {
-  this.read = !this.read;
-}
+// Book.prototype.toggleRead = function() {
+//   this.read = !this.read;
+// }
 
 function addBookToLibrary(title,author,pages,read) {
+  const myLibrary = getLibrary();
   const newBook = new Book(title,author,pages,read);
   myLibrary.push(newBook);
+  setLibrary(myLibrary);
+  displayBooks();
 }
 
 function removeBookFromLibrary(id) {
+  let myLibrary = getLibrary();
   myLibrary = myLibrary.filter(book => book.id != id);
+  setLibrary(myLibrary);
   displayBooks();
 }
 
@@ -61,9 +75,11 @@ const createBookPages = (pages) => {
 }
 
 const toggleBookRead = (id) => {
-  book = myLibrary.find(book => book.id === id);
-  book.toggleRead();
-  displayBooks();
+  const myLibrary = getLibrary();
+  const book = myLibrary.find(book => book.id === id);
+  book.read = !book.read;  //Toggle diretto, ho un oggetto JSON non un'istanza di book
+  setLibrary(myLibrary);   
+  displayBooks(); 
 }
 
 const createBookRead = (isRead,bookId) => {
@@ -91,8 +107,9 @@ const booksGrid = document.querySelector('.books-grid');
 
 /* To iterate books and display on the page */
 function displayBooks(){
-  booksGrid.replaceChildren(); //Necessario per ricaricare la libreria da capo ogni volta
+  booksGrid.replaceChildren(); //Necessario per evitare duplicazioni
 
+  const myLibrary = getLibrary();
   myLibrary.forEach((book) => {
     const bookCard = createBookCard(book.id);
     const bookName = createBookName(book.title);
@@ -111,27 +128,35 @@ function displayBooks(){
 const addBookButton = document.querySelector(".btn-add-book");
 const dialog = document.querySelector("dialog");
 const form = document.getElementById('book-form');
-const formButton = document.getElementById('form-button');
+
+const inputName = document.getElementById('book-name-f');
+const inputAuthor = document.getElementById('book-author-f');
+const inputPages = document.getElementById('book-pages-f');
+const inputIsRead = document.getElementById('book-read-f');
 
 addBookButton.addEventListener('click', () => {
   dialog.showModal();
 })
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault(); //Blocca l'invio dei dati
-  if (form.checkValidity()) { //controlla la validtà del form e resetta i campi
-    form.reset();
-    dialog.close();
-  }
+dialog.addEventListener('close', () => {
+  form.reset();
 })
 
-document.addEventListener("DOMContentLoaded",() => {
-  addBookToLibrary("The Odyssey","Omero",1000,false);
-  addBookToLibrary('Harry Potter',"JK Rowling",200,true);
-  addBookToLibrary('The Lord of The Rings',"J.R.R Tolkien",600,false);
-  addBookToLibrary('War and Peace',"Lev Tolstoj",750,false);
-  addBookToLibrary('System Error','Edward Snowden',500,true);
-  displayBooks();
+form.addEventListener('submit', (event) => {
+  event.preventDefault();  //Blocca l'invio dei dati dalla form
+  addBookToLibrary(inputName.value,inputAuthor.value,inputPages.value,inputIsRead.checked);
+  dialog.close();
 })
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // if (getLibrary().length === 0) {
+  //   addBookToLibrary("The Odyssey", "Omero", 1000, false);
+  //   addBookToLibrary("Harry Potter", "JK Rowling", 200, true);
+  //   addBookToLibrary("The Lord of The Rings", "J.R.R Tolkien", 600, false);
+  //   addBookToLibrary("War and Peace", "Lev Tolstoj", 750, false);
+  // }
+  displayBooks();
+});
 
 
