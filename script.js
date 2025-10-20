@@ -110,18 +110,20 @@ function displayBooks(){
 /* Dialog form */
 const addBookButton = document.querySelector(".btn-add-book");
 const dialog = document.querySelector("dialog");
+const form = document.getElementById('book-form');
 const formButton = document.getElementById('form-button');
 
 addBookButton.addEventListener('click', () => {
   dialog.showModal();
 })
 
-formButton.addEventListener('click', () => {
-  dialog.close();
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); //Blocca l'invio dei dati
+  if (form.checkValidity()) { //controlla la validtà del form e resetta i campi
+    form.reset();
+    dialog.close();
+  }
 })
-
-
-
 
 document.addEventListener("DOMContentLoaded",() => {
   addBookToLibrary("The Odyssey","Omero",1000,false);

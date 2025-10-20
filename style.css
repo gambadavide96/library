@@ -22,14 +22,14 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-family: 'Poppins', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 }
 
 button {
   font-family: 'Raleway', 'Lato', 'Helvetica Neue', Arial, sans-serif;
 
-  font-size: 2.7rem;
+  font-size: 2.9rem;
   width: 300px;
   padding: 5px;
   border: none;
