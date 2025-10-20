@@ -87,8 +87,6 @@ const createRemoveButton = (bookId) => {
   return removeButton;
 }
 
-
-
 const booksGrid = document.querySelector('.books-grid');
 
 /* To iterate books and display on the page */
@@ -112,10 +110,17 @@ function displayBooks(){
 /* Dialog form */
 const addBookButton = document.querySelector(".btn-add-book");
 const dialog = document.querySelector("dialog");
+const formButton = document.getElementById('form-button');
 
 addBookButton.addEventListener('click', () => {
   dialog.showModal();
 })
+
+formButton.addEventListener('click', () => {
+  dialog.close();
+})
+
+
 
 
 document.addEventListener("DOMContentLoaded",() => {

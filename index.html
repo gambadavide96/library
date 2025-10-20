@@ -17,7 +17,27 @@
   <dialog closedby="any">
     <div class="dialog-content">
       <h1>Add new Book</h1>
-      I'm the dialog
+      <form id="book-form" method="dialog" class="book-form">
+        <div class="form-row">
+          <label for="book-name-f">Name:</label>
+          <input id='book-name-f' name="book-name" type='text' required/>
+        </div>
+        <div class="form-row">
+          <label for="book-author-f">Author:</label>
+          <input id="book-author-f" name="book-author" type="text" required>
+        </div>
+        <div class="form-row">
+          <label for="book-pages-f">Pages:</label>
+          <input id="book-pages-f" name="book-author" type="number" max="1000" required>
+        </div>
+        <div class="form-row">
+          <label for="book-read-f">Have you read this book?</label>
+          <input id="book-read-f" name="book-read-f" value="is-read" type="checkbox" required>
+        </div>
+        <div class="form-row">
+          <button form="book-form" id="form-button">Add</button>
+        </div>
+      </form>
     </div>
   </dialog>
   <div class="header">

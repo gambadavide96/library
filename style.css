@@ -30,7 +30,7 @@ button {
   font-family: 'Raleway', 'Lato', 'Helvetica Neue', Arial, sans-serif;
 
   font-size: 2.7rem;
-  width: 250px;
+  width: 300px;
   padding: 5px;
   border: none;
   cursor: pointer;
@@ -44,16 +44,14 @@ button:hover {
 dialog {
   min-height: 65vh;
   min-width: 35vw;
+  padding: 1.5rem;
 
   background-color: #F9FAFB ;
   border-radius: 10px;
   border: 1px solid black;
   box-shadow: 2px 4px 5px lightgray;
+  
 
-}
-
-dialog h1 {
-  margin: 1rem 0;
 }
 
 .dialog-content {
@@ -62,7 +60,41 @@ dialog h1 {
   justify-content: center;
   align-items: center;
 
-  font-size: 1.5rem;
+  font-size: 2rem;
+}
+
+.book-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+.form-row {
+  display: flex;
+  justify-content: row;
+  align-items: center;
+  gap: 5px;
+}
+
+input {
+  width: 27rem;
+  height: 3.5rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+input[type='checkbox'] {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+label {
+  color: gray;
+  font-weight: bold;
+  font-family: sans-serif;
 }
 
 .header {
@@ -107,7 +139,7 @@ dialog h1 {
   box-shadow: 2px 4px 5px gray ;
 }
 
-.book .btn-remove {
+.btn-remove, form button {
   width: 300px;
   background-color: #E5E7EB;
   border-radius: 4px;
@@ -115,8 +147,7 @@ dialog h1 {
   box-shadow: 2px 4px 5px gray ;
 }
 
-.btn-add-book:active, .btn-remove:active
- {
+button:active{
   /* Sposta leggermente in basso */
   transform: translateY(2px);
 
