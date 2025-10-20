@@ -2,7 +2,7 @@
 A simple web app to keep track of the books you love.  
 You can add, view, and remove books from your personal library, including details such as title, author,pages and reading status.  
 
-👉 **[Watch here]()**
+👉 **[Try here](https://gambadavide96.github.io/library/)**
 
 
 ## 🚀 Features
