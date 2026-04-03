@@ -9,25 +9,18 @@ function setLibrary(library) {
   localStorage.setItem('library', JSON.stringify(library));
 }
 
-// Book constructor
-function Book(title,author,pages,read) {
-  if (!new.target) {
-    throw Error("You must use the 'new' operator to call the constructor");
+//Book Class
+class Book {
+
+  constructor(title,author,pages,read) {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
   }
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+
 }
-
-// Book.prototype.info = function() {
-//    return `${this.title}, ${this.author}, ${this.pages}, ${this.read}`;
-// }
-
-// Book.prototype.toggleRead = function() {
-//   this.read = !this.read;
-// }
 
 function addBookToLibrary(title,author,pages,read) {
   const myLibrary = getLibrary();
